@@ -1,10 +1,10 @@
 if [file exists "work"] {vdel -all}
 vlib work
 
-vlog -work "work" -lint=full -pedanticerrors "src/*"
+vlog -work "work" -lint=full -pedanticerrors -warning error "src/*"
 
 
-vlog -work "work" -lint=full -pedanticerrors "tb/*.sv"
+vlog -work "work" -lint=full -pedanticerrors -warning error "tb/*.sv"
 
 vsim top_directed
 set NoQuitOnFinish 1
