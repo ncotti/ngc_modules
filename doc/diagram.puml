@@ -1,0 +1,57 @@
+@startuml
+
+entity ngc_counter
+interface ngc_counter_if
+
+package uvm_db <<Database>> {
+    class cfg {
+        ngc_counter_if vif
+    }
+}
+
+package test {
+    class env
+}
+
+package test.env_h {
+
+    class scoreboard
+    class coverage_sub
+    class agent {
+        counter_ap
+    }
+
+}
+
+package test.env_h.agent_h {
+    class monitor {
+        uvm_analysis_port counter_ap
+    }
+    class driver {
+        seq_item_port
+    }
+    class sequencer {
+        seq_item_export
+    }
+
+}
+
+class counter_sequence_item {
+    uvm_sequence_item
+}
+
+class counter_sequence {
+}
+
+ngc_counter <--> ngc_counter_if
+cfg::ngc_counter_if <-- ngc_counter_if
+cfg::ngc_counter_if ..> driver
+cfg::ngc_counter_if ..> monitor
+
+sequencer o--> driver : seq_item
+monitor o--> agent
+
+agent o--> coverage_sub
+agent o--> scoreboard
+
+@enduml

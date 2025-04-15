@@ -11,13 +11,13 @@ logic [COUNT_WIDTH-1:0] count;
 logic count_hit;
 
 clocking mcb @(posedge clk);
-    output clk, rst, load, enb, dir, one_shot, load_value, count_to_value,
+    output rst, load, enb, dir, one_shot, load_value, count_to_value,
         count_from_value, step_value;
     input count, count_hit;
 endclocking: mcb
 
 clocking scb @(posedge clk);
-    input clk, rst, load, enb, dir, one_shot, load_value, count_to_value,
+    input rst, load, enb, dir, one_shot, load_value, count_to_value,
         count_from_value, step_value;
     output count;
 endclocking: scb

@@ -29,6 +29,7 @@ class counter_driver extends uvm_driver# (counter_sequence_item);
         @(vif.mcb);
         vif.mcb.rst <= counter_tx.rst;
         repeat(25) @vif.mcb;
+        this.seq_item_port.item_done();
     endtask: run_phase
 
 endclass: counter_driver
