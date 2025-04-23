@@ -17,10 +17,11 @@ class counter_monitor extends uvm_monitor;
 
     task run_phase(uvm_phase phase);
         counter_sequence_item counter_tx;
+        @(posedge vif.scb.rst);
         forever begin
-            @vif.scb;
             counter_tx = counter_sequence_item::type_id::create("counter_tx");
 
+            counter_tx.rst = vif.scb.rst;
             counter_tx.load = vif.scb.load;
             counter_tx.enb = vif.scb.enb;
             counter_tx.dir = vif.scb.dir;
@@ -29,6 +30,10 @@ class counter_monitor extends uvm_monitor;
             counter_tx.count_from_value = vif.scb.count_from_value;
             counter_tx.count_to_value = vif.scb.count_to_value;
             counter_tx.step_value = vif.scb.step_value;
+
+            counter_tx.prev_count = vif.mcb.count;
+
+            @vif.scb;
             counter_tx.count = vif.mcb.count;
             counter_tx.count_hit = vif.mcb.count_hit;
 

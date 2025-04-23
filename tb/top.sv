@@ -17,6 +17,7 @@ module top;
     initial begin
         counter_cfg cfg_h;
         cfg_h = new("cfg_h", dif);
+        cfg_h.clock_cycles_simulated_per_transaction = 1000;
         uvm_config_db #(counter_cfg)::set(null, "", "cfg", cfg_h);
         run_test();
     end

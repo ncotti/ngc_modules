@@ -17,7 +17,7 @@ onbreak {resume}
 log /* -r
 run -all
 
-coverage save cover_file.ucdb
-vcover report cover_file.ucdb -cvg -details
+coverage save tmp/cover_file.ucdb
+vcover report tmp/cover_file.ucdb -cvg -details
 
 quit

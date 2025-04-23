@@ -1,34 +1,26 @@
 class counter_sequence_item extends uvm_sequence_item;
     `uvm_object_utils(counter_sequence_item)
 
-    bit rst, load, enb, dir, one_shot;
-    bit [7:0] load_value, count_from_value;
+    // Inputs of the DUT
+    rand bit rst, load, enb, dir, one_shot;
+    rand bit [7:0] load_value, count_from_value;
     rand bit [7:0] count_to_value;
-    bit [3:0] step_value;
+    rand bit [3:0] step_value;
+
+    bit [7:0] prev_count;
+
+    // Outputs of the DUT
     bit [7:0] count;
     bit count_hit;
 
-    // constraint
-    constraint max_count {
-        count_to_value < 10;
-    }
-
     function new(string name = "");
         super.new(name);
-        this.rst = 1'b0;
-        this.load = 1'b0;
-        this.enb = 1'b1;
-        this.dir = 1'b0;
-        this.one_shot = 1'b0;
-        this.load_value = 'd0;
-        this.count_from_value = 'd0;
-        this.step_value = 'd1;
     endfunction: new
 
     function string convert2string();
         string s;
         s = super.convert2string();
-        return {s, $sformatf("control = %b count_to_value = %d", {rst, load, enb, dir, one_shot}, count_to_value)};
+        return {s, $sformatf("control = %b count_to_value = %d count_from_value = %d", {rst, load, enb, dir, one_shot}, count_to_value, count_from_value)};
     endfunction: convert2string
 
     function void do_copy(uvm_object rhs);
@@ -44,6 +36,7 @@ class counter_sequence_item extends uvm_sequence_item;
         this.dir = copy_h.dir;
         this.load_value = copy_h.load_value;
         this.count_from_value = copy_h.count_from_value;
+        this.count_to_value = copy_h.count_to_value;
         this.step_value = copy_h.step_value;
     endfunction: do_copy
 
