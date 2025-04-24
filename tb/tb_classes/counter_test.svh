@@ -9,7 +9,6 @@ class counter_test extends uvm_test;
 
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-
         this.env_h = counter_env::type_id::create("counter_env", this);
     endfunction: build_phase
 

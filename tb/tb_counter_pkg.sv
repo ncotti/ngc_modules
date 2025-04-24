@@ -10,7 +10,7 @@ package tb_counter_pkg;
     `include "counter_sequence_item.svh"
     `include "counter_sequence_item_free_running.svh"
     `include "counter_sequence_item_reset.svh"
-    `include "counter_seq_loaded.svh"
+    `include "counter_sequence_item_random.svh"
 
     typedef uvm_sequencer#(counter_sequence_item) counter_sequencer;
     `include "counter_sequence.svh"

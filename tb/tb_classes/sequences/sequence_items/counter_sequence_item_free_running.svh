@@ -2,9 +2,7 @@ class counter_sequence_item_free_running extends counter_sequence_item;
     `uvm_object_utils(counter_sequence_item_free_running)
 
     constraint step_value_mostly_one_never_zero_dist {
-        this.step_value dist {
-            1 :/ 90, [2:4] :/ 8, 0 :/2
-        };
+        this.step_value dist {1 :/ 90, [2:4] :/ 8, 0 :/2};
     }
 
     constraint always_enabled_con {

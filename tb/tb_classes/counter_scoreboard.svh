@@ -34,9 +34,13 @@ class counter_scoreboard extends uvm_subscriber#(counter_sequence_item);
                         (t.prev_count == t.count_to_value) ||
                         (t.prev_count == t.count_to_value - t.step_value) ||
                         (t.prev_count == t.count_to_value + t.step_value));
-                else
-                    pass = ((t.prev_count == t.count_to_value - t.step_value) ||
-                            (t.prev_count == t.count_to_value + t.step_value));
+                else begin
+                    if (t.count_to_value != t.count_from_value)
+                        pass = ((t.prev_count == t.count_to_value - t.step_value) ||
+                                (t.prev_count == t.count_to_value + t.step_value));
+                    else
+                        pass = (t.count == t.count_to_value);
+                end
 
             // Start of the counter
             end else if (t.count == t.count_from_value) begin
