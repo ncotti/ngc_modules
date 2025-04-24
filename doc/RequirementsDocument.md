@@ -4,19 +4,15 @@
 
 ### 1.1 System's Functionality
 
-*Provide here an overview of the system and what the overall intention of the system is.*
-
-The *ngc_counter* implements a general purpose counter, able to be programmed to count upwards, downwards, until a certain value, etc.
+The **ngc_counter** implements a general purpose counter, able to be programmed to count upwards, downwards, until a certain value, etc.
 
 ### 1.2 User Interfaces
-
-*Provide here a brief description of how the user will interact with the system.*
 
 This is a SystemVerilog module. The user should copy the design library into their project, instantiate the module and include it in their design.
 
 ## 2. System Requirements
 
-The *ngc_counter* should be able to:
+The **ngc_counter** should be able to:
 
 * Count upwards and backwards.
 * Enable or disable the count.

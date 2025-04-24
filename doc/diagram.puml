@@ -1,4 +1,4 @@
-@startuml
+@startuml testbench
 
 entity ngc_counter
 interface ngc_counter_if
@@ -10,15 +10,19 @@ package uvm_db <<Database>> {
 }
 
 package test {
-    class env
+    class env {}
 }
 
 package test.env_h {
 
-    class scoreboard
-    class coverage_sub
+    class scoreboard {
+        analysis_export
+    }
+    class coverage_sub {
+        analysis_export
+    }
     class agent {
-        counter_ap
+        uvm_analysis_port counter_ap
     }
 
 }
@@ -36,11 +40,22 @@ package test.env_h.agent_h {
 
 }
 
-class counter_seq_item {
-    uvm_sequence_item
+package sequences {
+    class counter_seq_free_running {}
+    class counter_seq_random {}
 }
 
-class counter_seq {
+package sequence_items {
+    class counter_seq_item {}
+    class counter_seq_item_reset {
+        rst == 1
+    }
+    class counter_seq_item_random {
+        any_input (with disttribution)
+    }
+    class counter_seq_item_free_running {
+        enb == 1, rst == 0, load == 0
+    }
 }
 
 ngc_counter <--> ngc_counter_if
@@ -53,5 +68,9 @@ monitor o--> agent
 
 agent o--> coverage_sub
 agent o--> scoreboard
+
+counter_seq_item <|-- counter_seq_item_reset
+counter_seq_item <|-- counter_seq_item_free_running
+counter_seq_item <|-- counter_seq_item_random
 
 @enduml
