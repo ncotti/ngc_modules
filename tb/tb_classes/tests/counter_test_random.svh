@@ -1,5 +1,5 @@
-class counter_test extends uvm_test;
-    `uvm_component_utils(counter_test)
+class counter_test_random extends uvm_test;
+    `uvm_component_utils(counter_test_random)
 
     counter_env env_h;
 
@@ -13,11 +13,12 @@ class counter_test extends uvm_test;
     endfunction: build_phase
 
     task run_phase(uvm_phase phase);
-        counter_seq_free_running seq_h;
+        counter_seq_random seq_h;
 
         phase.raise_objection(this);
-        seq_h = counter_seq_free_running::type_id::create("seq_h");
+        seq_h = counter_seq_random::type_id::create("seq_h");
         seq_h.start(this.env_h.agent_h.sequencer_h);
         phase.drop_objection(this);
     endtask: run_phase
-endclass: counter_test
+
+endclass: counter_test_random

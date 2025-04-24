@@ -10,14 +10,21 @@ vlog -f tb.f
 
 vopt top -o top_opt +acc +cover=sbfec+top
 
-vsim top_opt -coverage +UVM_NO_RELNOTES +UVM_TESTNAME=counter_test
-
+vsim top_opt -coverage +UVM_NO_RELNOTES +UVM_TESTNAME=counter_test_free_running
 set NoQuitOnFinish 1
 onbreak {resume}
 log /* -r
 run -all
+coverage save tmp/test_free_running.ucdb
 
-coverage save tmp/cover_file.ucdb
-vcover report tmp/cover_file.ucdb -cvg -details
+vsim top_opt -coverage +UVM_NO_RELNOTES +UVM_TESTNAME=counter_test_random
+set NoQuitOnFinish 1
+onbreak {resume}
+log /* -r
+run -all
+coverage save tmp/test_random.ucdb
+
+vcover merge tmp/test_all.ucdb tmp/test_free_running.ucdb tmp/test_random.ucdb
+vcover report tmp/test_all.ucdb -cvg
 
 quit

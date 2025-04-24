@@ -7,23 +7,30 @@ package tb_counter_pkg;
 
     `include "counter_cfg.svh"
 
+    // Sequence items
     `include "counter_seq_item.svh"
     `include "counter_seq_item_free_running.svh"
     `include "counter_seq_item_reset.svh"
     `include "counter_seq_item_random.svh"
 
-    typedef uvm_sequencer#(counter_seq_item) counter_seqr;
-    `include "counter_seq.svh"
+    // Sequences
+    typedef uvm_sequencer#(counter_seq_item) counter_sequencer;
     `include "counter_seq_free_running.svh"
+    `include "counter_seq_random.svh"
 
+    // Testbench components
     `include "counter_driver.svh"
     `include "counter_monitor.svh"
     `include "counter_coverage_sub.svh"
     `include "counter_scoreboard.svh"
 
+    // High level wrappers
     `include "counter_agent.svh"
     `include "counter_env.svh"
-    `include "counter_test.svh"
+
+    // Tests
+    `include "counter_test_free_running.svh"
+    `include "counter_test_random.svh"
 
 endpackage: tb_counter_pkg
 
