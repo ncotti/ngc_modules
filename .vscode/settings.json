@@ -1,0 +1,10 @@
+{
+    "cSpell.words": [
+        "Verilog"
+    ],
+
+    "markdownlint.config": {
+        "MD033": false,
+        "no-hard-tabs": false
+    }
+}
