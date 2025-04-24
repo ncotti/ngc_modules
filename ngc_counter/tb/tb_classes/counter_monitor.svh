@@ -2,7 +2,7 @@ class counter_monitor extends uvm_monitor;
     `uvm_component_utils(counter_monitor)
 
     uvm_analysis_port# (counter_seq_item) counter_ap;
-    virtual ngc_counter_if vif;
+    virtual ngc_counter_if#(.WIDTH(COUNTER_WIDTH)) vif;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);

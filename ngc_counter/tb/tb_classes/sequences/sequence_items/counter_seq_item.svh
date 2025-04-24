@@ -3,16 +3,16 @@ class counter_seq_item extends uvm_sequence_item;
 
     // Inputs of the DUT
     rand bit rst, load, enb, dir, one_shot;
-    rand bit [7:0] load_value, count_from_value;
-    rand bit [7:0] count_to_value;
-    rand bit [3:0] step_value;
+    rand bit [COUNTER_WIDTH-1:0] load_value, count_from_value;
+    rand bit [COUNTER_WIDTH-1:0] count_to_value;
+    rand bit [COUNTER_WIDTH/2-1:0] step_value;
 
     // Outputs of the DUT
-    bit [7:0] count;
+    bit [COUNTER_WIDTH-1:0] count;
     bit count_hit;
 
     // Transaction info
-    bit [7:0] prev_count;
+    bit [COUNTER_WIDTH-1:0] prev_count;
 
     function new(string name = "");
         super.new(name);

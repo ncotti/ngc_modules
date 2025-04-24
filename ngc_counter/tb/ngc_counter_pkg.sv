@@ -1,9 +1,11 @@
-`ifndef __TB_COUNTER_PKG_SV
-`define __TB_COUNTER_PKG_SV
+`ifndef __NGC_COUNTER_PKG_SV
+`define __NGC_COUNTER_PKG_SV
 
-package tb_counter_pkg;
+package ngc_counter_pkg;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
+
+    parameter COUNTER_WIDTH = 8;
 
     `include "counter_cfg.svh"
 
@@ -32,6 +34,6 @@ package tb_counter_pkg;
     `include "counter_test_free_running.svh"
     `include "counter_test_random.svh"
 
-endpackage: tb_counter_pkg
+endpackage: ngc_counter_pkg
 
-`endif // __TB_COUNTER_PKG_SV
+`endif // __NGC_COUNTER_PKG_SV

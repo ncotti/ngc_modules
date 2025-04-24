@@ -1,8 +1,8 @@
 module top_directed;
     timeunit 1ns/1ps;
-    localparam COUNT_WIDTH = 8;
+    localparam WIDTH = 8;
     logic clk;
-    ngc_counter_if #(.COUNT_WIDTH(COUNT_WIDTH)) dif (clk);
+    ngc_counter_if #(.WIDTH(WIDTH)) dif (clk);
 
     ngc_counter DUT (dif);
     directed_tb test(dif);

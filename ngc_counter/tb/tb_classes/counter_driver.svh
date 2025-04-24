@@ -1,7 +1,7 @@
 class counter_driver extends uvm_driver# (counter_seq_item);
     `uvm_component_utils(counter_driver)
 
-    virtual ngc_counter_if vif;
+    virtual ngc_counter_if#(.WIDTH(COUNTER_WIDTH)) vif;
     int unsigned clock_cycles;
 
     function new (string name, uvm_component parent);

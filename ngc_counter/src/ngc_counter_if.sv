@@ -1,13 +1,13 @@
 interface ngc_counter_if #(
-    parameter COUNT_WIDTH=8
+    parameter WIDTH
 )(
     input logic clk
 );
 
 logic rst, load, enb, dir, one_shot;
-logic [COUNT_WIDTH-1:0] load_value, count_to_value, count_from_value;
-logic [COUNT_WIDTH/2-1:0] step_value;
-logic [COUNT_WIDTH-1:0] count;
+logic [WIDTH-1:0] load_value, count_to_value, count_from_value;
+logic [WIDTH/2-1:0] step_value;
+logic [WIDTH-1:0] count;
 logic count_hit;
 
 clocking mcb @(posedge clk);

@@ -1,12 +1,11 @@
 module top;
     timeunit 1ns/1ps;
-    import tb_counter_pkg::*;
+    import ngc_counter_pkg::*;
     import uvm_pkg::*;
 
     logic clk;
-    localparam COUNT_WIDTH = 8;
 
-    ngc_counter_if #(.COUNT_WIDTH(COUNT_WIDTH)) dif(clk);
+    ngc_counter_if #(.WIDTH(COUNTER_WIDTH)) dif(clk);
     ngc_counter DUT (dif);
 
     initial begin
