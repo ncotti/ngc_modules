@@ -1,5 +1,5 @@
-class counter_sequence_item_free_running extends counter_sequence_item;
-    `uvm_object_utils(counter_sequence_item_free_running)
+class counter_seq_item_free_running extends counter_seq_item;
+    `uvm_object_utils(counter_seq_item_free_running)
 
     constraint step_value_mostly_one_never_zero_dist {
         this.step_value dist {1 :/ 90, [2:4] :/ 8, 0 :/2};
@@ -21,4 +21,4 @@ class counter_sequence_item_free_running extends counter_sequence_item;
         super.new();
     endfunction: new
 
-endclass: counter_sequence_item_free_running
+endclass: counter_seq_item_free_running

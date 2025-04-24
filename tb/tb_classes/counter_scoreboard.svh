@@ -1,4 +1,4 @@
-class counter_scoreboard extends uvm_subscriber#(counter_sequence_item);
+class counter_scoreboard extends uvm_subscriber#(counter_seq_item);
     `uvm_component_utils(counter_scoreboard)
 
     string prev_tx_string;
@@ -11,7 +11,7 @@ class counter_scoreboard extends uvm_subscriber#(counter_sequence_item);
         super.build_phase(phase);
     endfunction: build_phase
 
-    function bit check_count(counter_sequence_item t);
+    function bit check_count(counter_seq_item t);
         bit pass;
 
         if (t.rst)
@@ -51,7 +51,7 @@ class counter_scoreboard extends uvm_subscriber#(counter_sequence_item);
         return pass;
     endfunction: check_count
 
-    function void write(counter_sequence_item t);
+    function void write(counter_seq_item t);
         bit pass_count, pass_count_hit;
 
         pass_count = this.check_count(t);

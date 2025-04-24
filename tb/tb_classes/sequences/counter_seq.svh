@@ -1,7 +1,7 @@
-class counter_sequence extends uvm_sequence #(counter_sequence_item);
-    `uvm_object_utils(counter_sequence)
+class counter_seq extends uvm_sequence #(counter_seq_item);
+    `uvm_object_utils(counter_seq)
 
-    counter_sequence_item item;
+    counter_seq_item item;
 
     function new(string name = "");
         super.new(name);
@@ -9,10 +9,10 @@ class counter_sequence extends uvm_sequence #(counter_sequence_item);
 
     task body();
         repeat (1000) begin
-            this.item = counter_sequence_item::type_id::create("item");
+            this.item = counter_seq_item::type_id::create("item");
             this.start_item(this.item);
             assert(this.item.randomize());
             this.finish_item(this.item);
         end
     endtask: body
-endclass: counter_sequence
+endclass: counter_seq

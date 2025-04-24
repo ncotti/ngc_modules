@@ -7,14 +7,14 @@ package tb_counter_pkg;
 
     `include "counter_cfg.svh"
 
-    `include "counter_sequence_item.svh"
-    `include "counter_sequence_item_free_running.svh"
-    `include "counter_sequence_item_reset.svh"
-    `include "counter_sequence_item_random.svh"
+    `include "counter_seq_item.svh"
+    `include "counter_seq_item_free_running.svh"
+    `include "counter_seq_item_reset.svh"
+    `include "counter_seq_item_random.svh"
 
-    typedef uvm_sequencer#(counter_sequence_item) counter_sequencer;
-    `include "counter_sequence.svh"
-    `include "counter_sequence_free_running.svh"
+    typedef uvm_sequencer#(counter_seq_item) counter_seqr;
+    `include "counter_seq.svh"
+    `include "counter_seq_free_running.svh"
 
     `include "counter_driver.svh"
     `include "counter_monitor.svh"

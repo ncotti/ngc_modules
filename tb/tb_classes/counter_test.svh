@@ -13,10 +13,10 @@ class counter_test extends uvm_test;
     endfunction: build_phase
 
     task run_phase(uvm_phase phase);
-        counter_sequence_free_running seq_h;
+        counter_seq_free_running seq_h;
 
         phase.raise_objection(this);
-        seq_h = counter_sequence_free_running::type_id::create("seq_h");
+        seq_h = counter_seq_free_running::type_id::create("seq_h");
         seq_h.start(this.env_h.agent_h.sequencer_h);
         phase.drop_objection(this);
     endtask: run_phase

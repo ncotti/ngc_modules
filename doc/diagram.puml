@@ -36,11 +36,11 @@ package test.env_h.agent_h {
 
 }
 
-class counter_sequence_item {
+class counter_seq_item {
     uvm_sequence_item
 }
 
-class counter_sequence {
+class counter_seq {
 }
 
 ngc_counter <--> ngc_counter_if

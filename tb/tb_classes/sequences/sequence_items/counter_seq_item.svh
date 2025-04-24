@@ -1,5 +1,5 @@
-class counter_sequence_item extends uvm_sequence_item;
-    `uvm_object_utils(counter_sequence_item)
+class counter_seq_item extends uvm_sequence_item;
+    `uvm_object_utils(counter_seq_item)
 
     // Inputs of the DUT
     rand bit rst, load, enb, dir, one_shot;
@@ -7,11 +7,12 @@ class counter_sequence_item extends uvm_sequence_item;
     rand bit [7:0] count_to_value;
     rand bit [3:0] step_value;
 
-    bit [7:0] prev_count;
-
     // Outputs of the DUT
     bit [7:0] count;
     bit count_hit;
+
+    // Transaction info
+    bit [7:0] prev_count;
 
     function new(string name = "");
         super.new(name);
@@ -20,11 +21,12 @@ class counter_sequence_item extends uvm_sequence_item;
     function string convert2string();
         string s;
         s = super.convert2string();
-        return {s, $sformatf("control = %b count_to_value = %d count_from_value = %d", {rst, load, enb, dir, one_shot}, count_to_value, count_from_value)};
+        return {s, $sformatf("control = %b; count_to_value = %d; count_from_value = %d",
+            {rst, load, enb, dir, one_shot}, count_to_value, count_from_value)};
     endfunction: convert2string
 
     function void do_copy(uvm_object rhs);
-        counter_sequence_item copy_h;
+        counter_seq_item copy_h;
 
         assert(rhs != null);
         assert($cast(copy_h, rhs));
@@ -41,12 +43,9 @@ class counter_sequence_item extends uvm_sequence_item;
     endfunction: do_copy
 
     function bit do_compare(uvm_object rhs, uvm_comparer comparer);
-        counter_sequence_item compared_h;
+        counter_seq_item compared_h;
 
-        if (
-            (rhs == null) ||
-            (!$cast(compared_h, rhs))
-        )
+        if ( (rhs == null) || (!$cast(compared_h, rhs)) )
             return 1'b0;
         else
             return (
@@ -62,4 +61,4 @@ class counter_sequence_item extends uvm_sequence_item;
             );
     endfunction: do_compare
 
-endclass: counter_sequence_item
+endclass: counter_seq_item

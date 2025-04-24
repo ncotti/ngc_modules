@@ -1,7 +1,7 @@
-class counter_coverage_sub extends uvm_subscriber#(counter_sequence_item);
+class counter_coverage_sub extends uvm_subscriber#(counter_seq_item);
     `uvm_component_utils(counter_coverage_sub)
 
-    counter_sequence_item item;
+    counter_seq_item item;
 
     // Counting up and down from and to different values
     covergroup count_direction_cg;
@@ -52,7 +52,7 @@ class counter_coverage_sub extends uvm_subscriber#(counter_sequence_item);
         this.step_value_cg = new();
     endfunction: new
 
-    function void write(counter_sequence_item t);
+    function void write(counter_seq_item t);
         this.item = t;
         this.count_direction_cg.sample();
         this.options_cg.sample();

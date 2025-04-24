@@ -1,7 +1,7 @@
 class counter_monitor extends uvm_monitor;
     `uvm_component_utils(counter_monitor)
 
-    uvm_analysis_port# (counter_sequence_item) counter_ap;
+    uvm_analysis_port# (counter_seq_item) counter_ap;
     virtual ngc_counter_if vif;
 
     function new(string name, uvm_component parent);
@@ -16,10 +16,10 @@ class counter_monitor extends uvm_monitor;
     endfunction: build_phase
 
     task run_phase(uvm_phase phase);
-        counter_sequence_item counter_tx;
+        counter_seq_item counter_tx;
         @(posedge vif.scb.rst);
         forever begin
-            counter_tx = counter_sequence_item::type_id::create("counter_tx");
+            counter_tx = counter_seq_item::type_id::create("counter_tx");
 
             counter_tx.rst = vif.scb.rst;
             counter_tx.load = vif.scb.load;

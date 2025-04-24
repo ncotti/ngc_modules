@@ -1,4 +1,4 @@
-class counter_driver extends uvm_driver# (counter_sequence_item);
+class counter_driver extends uvm_driver# (counter_seq_item);
     `uvm_component_utils(counter_driver)
 
     virtual ngc_counter_if vif;
@@ -16,7 +16,7 @@ class counter_driver extends uvm_driver# (counter_sequence_item);
     endfunction: build_phase
 
     task run_phase(uvm_phase phase);
-        counter_sequence_item counter_tx;
+        counter_seq_item counter_tx;
 
         forever begin
             this.seq_item_port.get_next_item(counter_tx);
